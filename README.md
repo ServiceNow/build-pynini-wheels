@@ -9,7 +9,7 @@ This project heavily relies on other open-source projects.
 ## What is this?
 As of the writing of these lines, the recommended installation method for Pynini was through
 Conda-Forge. The enclosed `Dockerfile` gives you another alternative: build your own Python
-*Platform Wheels* for `pynini` so that you may easily `pip`/`poetry`-install it in your
+*Wheels* for `pynini` so that you may easily `pip`/`poetry`-install it in your
 favourite linux.
 
 The process differs for macOS and Windows.
