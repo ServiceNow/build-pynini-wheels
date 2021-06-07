@@ -15,14 +15,20 @@ favourite linux.
 The process differs for macOS and Windows.
 
 ## Usage
-To build wheels and run Pynini's tests, run:
+
+To build wheels, run:
+```shell script
+docker build --target=build-wheels -t build-pynini-wheels .
+```
+
+To build wheels and also run Pynini's tests, run:
 ```shell script
 docker build --target=run-tests -t build-pynini-wheels .
 ```
 
 To extract the resulting wheels from the Docker image, run:
 ```shell script
-docker run --rm -v `pwd`:/io build-pynini-wheels cp -r /wheelhouse /io
+docker run --rm -v $(pwd):/io --user "$(id -u):$(id -g)" build-pynini-wheels cp -r /wheelhouse /io
 ```
 Notice that this may also give you Cython wheels.
 
