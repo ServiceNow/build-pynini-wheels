@@ -113,16 +113,15 @@ FROM install-pynini-from-wheel AS run-tests
 RUN echo "How does one run absl-py tests? We may never know the answer... Oh well."
 
 # Copy Pynini's tests and testing assets (but not Pynini itself)
-# COPY --from=wheel-building-env /src/pynini-${PYNINI_VERSION}/tests /tests
+COPY --from=wheel-building-env /src/pynini-${PYNINI_VERSION}/tests /tests
 
 # RUN curl https://copr.fedorainfracloud.org/coprs/vbatts/bazel/repo/epel-7/vbatts-bazel-epel-7.repo > /etc/yum.repos.d/vbatts-bazel-epel-7.repo \
 #     && yum install -y bazel3
 
 # Run Pynini's tests for each of our Pythons
-# RUN cd /tests && for PYBIN in /opt/python/*/bin; do \
-#     "${PYBIN}/pip" install absl-py || exit 1; \
-#     for TEST in "/tests/*_test.py"; do \
-#         "${PYBIN}/python" ${TEST} || exit 1; \
-#         done; \
-#     done
-#     # "${PYBIN}/python" -m unittest discover -p '*_test.py' || exit 1; done
+RUN cd / && for PYBIN in /opt/python/*/bin; do \
+    "${PYBIN}/pip" install absl-py || exit 1; \
+    for TEST in "tests/*_test.py"; do \
+        "${PYBIN}/python" ${TEST} ; \
+        done; \
+    done
