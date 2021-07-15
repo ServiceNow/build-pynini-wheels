@@ -1,4 +1,8 @@
 # Dockerfile
+# Pierre-André Noël, May 12th 2020
+# Copyright © Element AI Inc. All rights reserved.
+# Apache License, Version 2.0
+#
 # See README.md for information and usage.
 #
 # NOTE:
